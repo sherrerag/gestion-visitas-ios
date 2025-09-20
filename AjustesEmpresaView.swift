@@ -1,0 +1,2 @@
+// AjustesEmpresaView.swift
+import SwiftUI
