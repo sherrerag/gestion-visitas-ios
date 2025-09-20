@@ -1,0 +1,30 @@
+name: iOS Build (Free)
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: macos-latest
+
+    steps:
+      # 1️⃣ Descargar código
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # 2️⃣ Instalar CocoaPods (si lo usas)
+      - name: Install CocoaPods
+        run: pod install
+        working-directory: ./TuProyecto
+        continue-on-error: true
+
+      # 3️⃣ Compilar en simulador iOS
+      - name: Build for simulator
+        run: xcodebuild -workspace "TuProyecto.xcworkspace" \
+                        -scheme "TuEsquema" \
+                        -destination 'platform=iOS Simulator,name=iPhone 15,OS=17.0' \
+                        clean build
