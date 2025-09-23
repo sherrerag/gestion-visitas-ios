@@ -1,0 +1,2 @@
+// ActivityView.swift
+import SwiftUI

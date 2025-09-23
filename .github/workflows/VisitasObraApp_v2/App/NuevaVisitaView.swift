@@ -1,0 +1,2 @@
+// NuevaVisitaView.swift
+import SwiftUI
